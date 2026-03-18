@@ -69,9 +69,9 @@ This template uses a simple layering approach:
 
 ```mermaid
 flowchart TD
-    router --> service[Service (business logic)]
-    service --> uow[UnitOfWork (transaction)]
-    uow --> repo[Repository (data access)]
+    router --> service["Service (business logic)"]
+    service --> uow["UnitOfWork (transaction)"]
+    uow --> repo["Repository (data access)"]
 ```
 
 ### Example: router -> service (UoW) -> repo
