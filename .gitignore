@@ -61,6 +61,11 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
 # Flask stuff:
 instance/
 .webassets-cache
@@ -139,6 +144,7 @@ celerybeat.pid
 .envrc
 .venv
 env/
+.venv/
 venv/
 ENV/
 env.bak/
