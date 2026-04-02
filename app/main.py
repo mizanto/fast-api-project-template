@@ -1,3 +1,4 @@
+import time
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -6,12 +7,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.router import api_v1_router
 from app.core.config import Settings, get_settings
 from app.core.logging import configure_logging
+from app.core.version import read_project_version_from_pyproject
 
 
 def create_app(settings: Settings) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         # Place startup/shutdown logic here (e.g. warm up caches, init telemetry, etc.)
+        app.state.started_at = time.monotonic()
+        app.state.version = read_project_version_from_pyproject()
         configure_logging(level=settings.log_level)
         yield
 
